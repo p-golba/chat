@@ -15,15 +15,15 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
+    super.initState();
     final fbm = FirebaseMessaging.instance;
-    fbm.requestPermission();
+    fbm.requestPermission(alert: true);
     FirebaseMessaging.onMessage.listen((event) {
       return;
     });
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
       return;
     });
-    super.initState();
   }
 
   @override
@@ -32,6 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         actions: [
           DropdownButton(
+            underline: Container(),
             items: [
               DropdownMenuItem(
                 value: 'logout',
